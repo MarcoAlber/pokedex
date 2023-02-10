@@ -9,13 +9,12 @@ body {
     flex-wrap: wrap;
 }
 
-#pokemonCard {
+.pokemonCard {
     position: relative;
     margin-left: 15px;
     margin-top: 15px;
     height: 50vh;
     width: 500px;
-    background-color: brown;
     color: white;
     display: flex;
     align-items: center;
@@ -34,4 +33,76 @@ body {
     top: 5px;
     right: 15px;
     font-size: 24px;
+}
+
+.bg-fire {
+    background-color: #FF7A60;
+}
+
+.bg-grass {
+    background-color: #91D08B;
+}
+
+.bg-water {
+    background-color: #6BB9EB;
+}
+
+.bg-bug {
+    background-color: #B2D369;
+}
+
+.bg-normal {
+    background-color: #CFCFC3;
+}
+
+.bg-poison {
+    background-color: #B486DC;
+}
+
+.bg-electric {
+    background-color: #FFE64C;
+}
+
+.bg-ground {
+    background-color: #C09D74;
+}
+
+.bg-fairy {
+    background-color: #F1B0ED;
+}
+
+.bg-fighting {
+    background-color: #CF887C;
+}
+
+.bg-psychic {
+    background-color: #FF91A6;
+}
+
+.bg-rock {
+    background-color: #CFC393;
+}
+
+.bg-ghost {
+    background-color: #997B9A;
+}
+
+.bg-ice {
+    background-color: #9DDDD2;
+}
+
+.bg-dragon {
+    background-color: #889AD1;
+}
+
+.bg-dark {
+    background-color: #837C7C;
+}
+
+.bg-steel {
+    background-color: #C3C3CF;
+}
+
+.bg-flying {
+    background-color: #B5D9FF;
 }
