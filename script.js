@@ -1,7 +1,10 @@
 let loadedPokemon = [''];
+let load = 30;
+let pokemonLoaded = 1;
 
 async function loadPokemon() {
-    for (i = 1; i < 1009; i++) {
+    for (i = pokemonLoaded; i < load; i++) {
+        pokemonLoaded++;
         let urlPokemon = `https://pokeapi.co/api/v2/pokemon-form/${i}/`;
         let responsePokemon = await fetch(urlPokemon);
         let currentPokemon = await responsePokemon.json();
@@ -75,4 +78,9 @@ function changeBackgroundColor(pokemonType) {
     else if (pokemonType.includes("dark")) { document.getElementById(`pokemonCard${i}`).classList.add('bg-dark') }
     else if (pokemonType.includes("steel")) { document.getElementById(`pokemonCard${i}`).classList.add('bg-steel') }
     else if (pokemonType.includes("flying")) { document.getElementById(`pokemonCard${i}`).classList.add('bg-flying') }
+}
+
+function loadMore() {
+    load = load + 30;
+    loadPokemon();
 }
