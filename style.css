@@ -11,21 +11,48 @@ body {
 
 .pokemonCard {
     position: relative;
+    background-size: 750px;
     margin-left: 15px;
     margin-top: 15px;
-    height: 50vh;
-    width: 500px;
-    color: white;
+    height: 350px;
+    width: 450px;
+    color: black;
     display: flex;
     align-items: center;
     flex-direction: column;
     border-radius: 20px;
+    cursor: pointer;
+}
+
+.background-image-Card {
+    background-image: url(img/pokeball.png);
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    right: 0;
+    bottom: 0;
+    background-size: 550px;
+    z-index: -1;
 }
 
 #pokemonImage {
-    height: 250px;
+    background-color: rgba(0, 0, 0, 0.550);
+    border-radius: 20%;
+    height: 200px;
     width: auto;
     object-fit: cover;
+}
+
+.pokemonType {
+    background-color: #ffffff49;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 19px;
+    letter-spacing: 1px;
+}
+
+.pokemonTypeContainer {
+    margin-top: 15px;
 }
 
 .pokemonNumber {
@@ -36,73 +63,73 @@ body {
 }
 
 .bg-fire {
-    background-color: #FF7A60;
+    background-color: #ff7a60ef;
 }
 
 .bg-grass {
-    background-color: #91D08B;
+    background-color: #91d08bef;
 }
 
 .bg-water {
-    background-color: #6BB9EB;
+    background-color: #6bbaebef;
 }
 
 .bg-bug {
-    background-color: #B2D369;
+    background-color: #b1d369ef;
 }
 
 .bg-normal {
-    background-color: #CFCFC3;
+    background-color: #cfcfc3ef;
 }
 
 .bg-poison {
-    background-color: #B486DC;
+    background-color: #b486dcef;
 }
 
 .bg-electric {
-    background-color: #FFE64C;
+    background-color: #ffe74cef;
 }
 
 .bg-ground {
-    background-color: #C09D74;
+    background-color: #c09d74ef;
 }
 
 .bg-fairy {
-    background-color: #F1B0ED;
+    background-color: #f1b0edef;
 }
 
 .bg-fighting {
-    background-color: #CF887C;
+    background-color: #cf887cef;
 }
 
 .bg-psychic {
-    background-color: #FF91A6;
+    background-color: #ff91a5ef;
 }
 
 .bg-rock {
-    background-color: #CFC393;
+    background-color: #cfc393ef;
 }
 
 .bg-ghost {
-    background-color: #997B9A;
+    background-color: #997b9aef;
 }
 
 .bg-ice {
-    background-color: #9DDDD2;
+    background-color: #9dddd2ef;
 }
 
 .bg-dragon {
-    background-color: #889AD1;
+    background-color: #889ad1ef;
 }
 
 .bg-dark {
-    background-color: #837C7C;
+    background-color: #837c7cef;
 }
 
 .bg-steel {
-    background-color: #C3C3CF;
+    background-color: #c3c3cfef;
 }
 
 .bg-flying {
-    background-color: #B5D9FF;
+    background-color: #b5d9ffef;
 }

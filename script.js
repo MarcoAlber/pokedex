@@ -33,14 +33,34 @@ async function showPokemon() {
         let pokemonTypeSteel = pokemonType.includes("steel");
         let pokemonTypeFlying = pokemonType.includes("flying");
 
-        document.getElementById('containerWithPokemon').innerHTML += `
-        <div id="pokemonCard${i}" class="pokemonCard">
+        if (showStatsPokemon['types'].length > 1) {
+            document.getElementById('containerWithPokemon').innerHTML += `
+            <div onclick="openPokemonCard(${i})" id="pokemonCard${i}" class="pokemonCard">
                 <span class="pokemonNumber"><b>${showPokemonNumber}</b></span>
                 <h1 id="pokemonNames">${pokemonNameBigLetter}</h1>
                 <img loading="lazy" id="pokemonImage" src= "${showPokemonImage}">
-                <span class="pokemonType">${pokemonType}</span>
+                <div id="pokemonTypeContainer" class="pokemonTypeContainer">
+                    <span class="pokemonType">${pokemonType}</span>
+                    <span class="pokemonType">${showStatsPokemon['types']['1']['type']['name']}</span>
                 </div>
-            `;
+                <div class="background-image-Card">
+                </div>
+            </div>`;
+        }
+
+        else {
+            document.getElementById('containerWithPokemon').innerHTML += `
+        <div onclick="openPokemonCard(${i})" id="pokemonCard${i}" class="pokemonCard">
+                <span class="pokemonNumber"><b>${showPokemonNumber}</b></span>
+                <h1 id="pokemonNames">${pokemonNameBigLetter}</h1>
+                <img loading="lazy" id="pokemonImage" src= "${showPokemonImage}">
+                <div id="pokemonTypeContainer" class="pokemonTypeContainer">
+                    <span class="pokemonType">${pokemonType}</span>
+                </div>
+                <div class="background-image-Card">
+                </div>
+        </div>`;
+        }
 
         if (pokemonTypeGrass) { document.getElementById(`pokemonCard${i}`).classList.add('bg-grass') }
         else if (pokemonTypeFire) { document.getElementById(`pokemonCard${i}`).classList.add('bg-fire') }
@@ -61,4 +81,8 @@ async function showPokemon() {
         else if (pokemonTypeSteel) { document.getElementById(`pokemonCard${i}`).classList.add('bg-steel') }
         else if (pokemonTypeFlying) { document.getElementById(`pokemonCard${i}`).classList.add('bg-flying') }
     }
+}
+
+function openPokemonCard(i) {
+
 }
