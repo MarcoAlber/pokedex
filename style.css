@@ -1,6 +1,13 @@
 body {
     margin: 0;
     font-family: 'Raleway';
+    background-image: url(./img/forest.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+    margin-top: 15px !important;
 }
 
 .buttonLoad {
@@ -16,6 +23,7 @@ body {
     margin-bottom: 15px;
 }
 
+
 .pokemonCard {
     position: relative;
     background-size: 750px;
@@ -29,11 +37,27 @@ body {
     align-items: center;
     flex-direction: column;
     border-radius: 20px;
+    border-bottom-right-radius: 0;
     cursor: pointer;
 }
 
+.pokemonCard:hover .pokemonImage {
+    height: auto;
+    animation: imageSize 0.8s forwards;
+}
+
+@keyframes imageSize {
+    from {
+        width: 200px;
+    }
+
+    to {
+        width: 220px;
+    }
+}
+
 .background-image-Card {
-    background-image: url(img/pokeball.png);
+    background-image: url(./img/pokeball.png);
     position: absolute;
     top: 10px;
     left: 15px;
@@ -43,11 +67,23 @@ body {
     z-index: -1;
 }
 
-#pokemonImage {
+.background-image-StyleCard {
+    background-image: url(./img/pokeball.png);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: 500px;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.pokemonImage {
     background-color: rgba(0, 0, 0, 0.550);
     border-radius: 20%;
-    height: 200px;
-    width: auto;
+    height: auto;
+    width: 200px;
     object-fit: cover;
 }
 
@@ -68,6 +104,247 @@ body {
     top: 5px;
     right: 15px;
     font-size: 24px;
+}
+
+.currentPokemonStats {
+    width: 500px;
+    z-index: 10;
+    position: fixed;
+    top: 20vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    /* animation: statsSize 0.8s forwards;*/
+}
+
+/*@keyframes statsSize {
+    from {
+        width: 0px;
+    }
+
+    to {
+        width: 500px;
+    }
+}*/
+
+.contentPokemonStats {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.statsWhiteBg {
+    background-color: white;
+    width: 100%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.abilities-bg {
+    margin-right: 3px;
+    margin-bottom: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    background-color: rgba(211, 211, 211, 0.611);
+}
+
+.types-bg {
+    margin-right: 3px;
+    margin-bottom: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+
+}
+
+
+.arrowRight {
+    position: absolute;
+    top: 140px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.arrowLeft {
+    position: absolute;
+    top: 140px;
+    left: 20px;
+    cursor: pointer;
+}
+
+.closeStats {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 36px;
+    height: auto;
+    cursor: pointer;
+}
+
+.statsLinks {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding-bottom: 15px;
+}
+
+.statsLinks a {
+    cursor: pointer;
+}
+
+.containerMoves::-webkit-scrollbar {
+    width: 10px;
+}
+
+.containerMoves::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.containerMoves::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.containerMoves::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
+
+.informationPokemon {
+    height: 235px;
+    margin-bottom: 25px;
+}
+
+.containerMoves {
+    max-height: 235px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
+.move {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgba(211, 211, 211, 0.611);
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.aboutInformation {
+    display: flex;
+    padding-top: 15px;
+    margin-left: 20px;
+}
+
+.showAboutRow {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    height: 30px;
+}
+
+.headerInformation {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.pokemonInformations {
+    display: flex;
+    flex-direction: column;
+}
+
+.myChart {
+    padding-top: 20px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.containerStatsImage {
+    position: relative;
+    height: 160px;
+}
+
+.statsImage {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+}
+
+.loadingBg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    opacity: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 35;
+}
+
+.loadingImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadingImage img {
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    height: 300px;
+    width: auto;
+    animation: rotation 2s infinite linear;
+}
+
+.loadingImage h1 {
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    top: 62%;
+    font-weight: 600;
+    z-index: 30;
+    color: white;
+    letter-spacing: 1px;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.dp-none {
+    display: none;
 }
 
 .bg-fire {
@@ -130,7 +407,7 @@ body {
     background-color: #889ad1ef;
 }
 
-.bg-dark {
+.bg-darkPokemon {
     background-color: #837c7cef;
 }
 
@@ -140,4 +417,31 @@ body {
 
 .bg-flying {
     background-color: #b5d9ffef;
+}
+
+@media (max-width: 500px) {
+    .currentPokemonStats {
+        width: 350px;
+        top: 13vh;
+    }
+
+    .statsWhiteBg {
+        width: 100%;
+    }
+
+    .myChart {
+        width: 95%;
+    }
+
+    .background-image-StyleCard {
+        background-size: 354px;
+    }
+
+    .loadingImage img {
+        height: 210px;
+    }
+
+    .currentPokemonStats {
+        top: 12%;
+    }
 }

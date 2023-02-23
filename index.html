@@ -2,23 +2,33 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <link href="../fonts/fonts.css" rel="stylesheet">
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokedex</title>
+  <script src="../node_modules/chart.js/dist/chart.umd.js"></script>
+  <script src="./script.js"></script>
+  <script src="./templates.js"></script>
+  <script src="./chart.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <link href="../fonts/fonts.css" rel="stylesheet">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body onload="loadPokemon()">
-    <div class="containerWithPokemon" id="containerWithPokemon">
+
+  <div class="containerWithPokemon" id="containerWithPokemon">
+    <div id="containerWithPokemonStats">
 
     </div>
-    <div class="buttonLoad">
-        <button onclick="loadMore()" type="button" class="btn btn-primary">Load more</button>
-    </div>
+  </div>
+
+  <div class="loadingImage dp-none" id="loadingImage">
+    <img src="./img/squirtle.png">
+    <h1>Loading...</h1>
+  </div>
+  <div class="loadingBg dp-none" id="loadingBg">
+  </div>
 
 </body>
 
