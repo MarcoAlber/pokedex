@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: auto !important;
+}
+
 body {
     margin: 0;
     font-family: 'Raleway';
@@ -10,6 +14,36 @@ h1 {
     margin-top: 15px !important;
 }
 
+header {
+    position: sticky;
+    top: 0;
+    padding-top: 5px;
+    background-image: url(./img/forest.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    z-index: 50;
+    padding-bottom: 5px;
+}
+
+input {
+    outline: none;
+}
+
+.gottaHeadline {
+    font-size: 50px;
+    font-weight: 600;
+    font-style: italic;
+    color: rgba(250, 250, 250, 1);
+}
+
+.headerImg {
+    width: auto;
+    height: 75px;
+    cursor: pointer;
+}
+
 .buttonLoad {
     display: flex;
     justify-content: center;
@@ -20,16 +54,14 @@ h1 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 15px;
 }
-
 
 .pokemonCard {
     position: relative;
     background-size: 750px;
     margin-left: 7px;
     margin-right: 7px;
-    margin-top: 15px;
+    margin-bottom: 15px;
     height: 350px;
     width: 450px;
     color: black;
@@ -118,18 +150,18 @@ h1 {
     align-items: center;
     flex-direction: column;
     border-radius: 20px;
-    /* animation: statsSize 0.8s forwards;*/
+    animation: statsSize 0.8s forwards;
 }
 
-/*@keyframes statsSize {
+@keyframes statsSize {
     from {
-        width: 0px;
+        width: 150px;
     }
 
     to {
         width: 500px;
     }
-}*/
+}
 
 .contentPokemonStats {
     margin-top: 20px;
@@ -163,15 +195,17 @@ h1 {
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 10px;
-
 }
-
 
 .arrowRight {
     position: absolute;
     top: 140px;
     right: 20px;
     cursor: pointer;
+}
+
+.arrowRight:hover {
+    opacity: 0.6;
 }
 
 .arrowLeft {
@@ -181,6 +215,10 @@ h1 {
     cursor: pointer;
 }
 
+.arrowLeft:hover {
+    opacity: 0.6;
+}
+
 .closeStats {
     position: absolute;
     top: 10px;
@@ -188,6 +226,10 @@ h1 {
     width: 36px;
     height: auto;
     cursor: pointer;
+}
+
+.closeStats:hover {
+    opacity: 0.6;
 }
 
 .statsLinks {
@@ -417,31 +459,4 @@ h1 {
 
 .bg-flying {
     background-color: #b5d9ffef;
-}
-
-@media (max-width: 500px) {
-    .currentPokemonStats {
-        width: 350px;
-        top: 13vh;
-    }
-
-    .statsWhiteBg {
-        width: 100%;
-    }
-
-    .myChart {
-        width: 95%;
-    }
-
-    .background-image-StyleCard {
-        background-size: 354px;
-    }
-
-    .loadingImage img {
-        height: 210px;
-    }
-
-    .currentPokemonStats {
-        top: 12%;
-    }
 }

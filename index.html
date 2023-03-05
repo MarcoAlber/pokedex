@@ -10,12 +10,21 @@
   <script src="./script.js"></script>
   <script src="./templates.js"></script>
   <script src="./chart.js"></script>
+  <script src="./backgroundcolor.js"></script>
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./responsive.css">
   <link href="../fonts/fonts.css" rel="stylesheet">
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
 </head>
 
 <body onload="loadPokemon()">
+
+  <header id="header">
+    <img onclick="moveUp()" class="headerImg" id="headerImg" title="scroll to top" src="./img/pokeball-header.png">
+    <p class="gottaHeadline" id="gottaHeadline">Gotta Catch 'Em All!</p>
+    <input type="text" id="search" onkeyup="filterPokemon()" placeholder="Search for a Pokemon">
+  </header>
 
   <div class="containerWithPokemon" id="containerWithPokemon">
     <div id="containerWithPokemonStats">
@@ -29,7 +38,6 @@
   </div>
   <div class="loadingBg dp-none" id="loadingBg">
   </div>
-
 </body>
 
 </html>
