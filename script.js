@@ -269,3 +269,13 @@ function filterPokemon() {
 function moveUp() {
     window.location = '#';
 }
+
+function scrollUpOrEmptyInput() {
+    if (document.getElementById('search').value.length == 0) {
+        window.location = '#';
+    }
+    else {
+        document.getElementById('search').value = '';
+        filterPokemon();
+    }
+}
