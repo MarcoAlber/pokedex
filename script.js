@@ -283,9 +283,8 @@ function scrollUpOrEmptyInput() {
 }
 
 function emptyInputIfSearch() {
-    if (document.getElementById('search').value.length == 0) {
-    }
-    else {
+    if (document.getElementById('search').value.length > 0) {
+
         document.getElementById('search').value = '';
         filterPokemon();
     }
