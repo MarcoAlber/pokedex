@@ -1,5 +1,5 @@
 let loadedPokemon = [''];
-let load = 20;
+let load = 30;
 let currentPokemon = 1;
 let isLoading = false;
 
