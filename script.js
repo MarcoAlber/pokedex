@@ -58,18 +58,23 @@ function showPokemon(i) {
 }
 
 window.onscroll = function () {
-    if ((window.innerHeight + window.scrollY + 200) >= document.body.offsetHeight && !isLoading) {
-        isLoading = true;
-        if (load < 975) {
-            load = load + 30;
+    if (document.getElementById('search').value.length > 0) {
+        return;
+    }
+    else {
+        if ((window.innerHeight + window.scrollY + 200) >= document.body.offsetHeight && !isLoading) {
+            isLoading = true;
+            if (load < 975) {
+                load = load + 30;
+            }
+            else if (load < 1009) {
+                load = load + 1;
+            }
+            loadPokemon();
+            setTimeout(() => {
+                isLoading = false;
+            }, 500)
         }
-        else if (load < 1009) {
-            load = load + 1;
-        }
-        loadPokemon();
-        setTimeout(() => {
-            isLoading = false;
-        }, 500)
     }
 };
 
@@ -284,7 +289,6 @@ function scrollUpOrEmptyInput() {
 
 function emptyInputIfSearch() {
     if (document.getElementById('search').value.length > 0) {
-
         document.getElementById('search').value = '';
         filterPokemon();
     }
