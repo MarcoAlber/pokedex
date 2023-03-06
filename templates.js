@@ -111,3 +111,9 @@ function showAboutAbilitiesTemplate(k, i) {
     <p class="abilities-bg">${loadedPokemon[i]['abilities'][`${k}`]['ability']['name']}</p>
 `
 }
+
+function containerWithPokemonStatsTemplate() {
+    return `
+    <div id="containerWithPokemonStats"></div>
+    `
+}

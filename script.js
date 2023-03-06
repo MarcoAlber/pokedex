@@ -258,7 +258,7 @@ function filterPokemon() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
     let pokemonContainer = document.getElementById('containerWithPokemon');
-    pokemonContainer.innerHTML = '<div id="containerWithPokemonStats"></div>';
+    pokemonContainer.innerHTML = containerWithPokemonStatsTemplate();
 
     for (let i = 1; i < loadedPokemon.length; i++) {
         let pokemon = loadedPokemon[i]['name'];
