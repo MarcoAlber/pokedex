@@ -293,7 +293,7 @@ function showStats(i) {
     chartJSSetting(i);
 }
 
-async function filterPokemon() {
+function filterPokemon() {
     moveUp();
     searchedPokemon = [''];
     let search = document.getElementById('search').value;
@@ -309,27 +309,31 @@ async function filterPokemon() {
 }
 
 async function searchAllPokemon(search) {
+    loadingScreenStart();
     for (let i = 0; i < allPokemon['1']['results'].length; i++) {
         let pokemon = allPokemon['1']['results'][i]['name'];
         let pokemonURL = allPokemon['1']['results'][i]['url'];
         if (pokemon.toLowerCase().includes(search)) {
-            loadingScreenStart();
-            let responseSearchedPokemon = await fetch(pokemonURL);
-            let currentSearchedPokemonJSON = await responseSearchedPokemon.json();
-            let pokemonSearchedName = currentSearchedPokemonJSON['name'];
-            let urlPokemonWithStatsSearched = `https://pokeapi.co/api/v2/pokemon/${pokemonSearchedName}`;
-            let responsePokemonWithStatsSearched = await fetch(urlPokemonWithStatsSearched);
-            let showStatsPokemonSearched = await responsePokemonWithStatsSearched.json();
-            searchedPokemon.push(showStatsPokemonSearched);
-            loadingScreenEnd();
+            await searchAllPokemonByLetters(pokemonURL)
         }
     }
     for (let j = 1; j < searchedPokemon.length; j++) {
         showSearchedPokemon(j);
     }
+    loadingScreenEnd();
 }
 
-async function searchLoadedPokemon(search) {
+async function searchAllPokemonByLetters(pokemonURL) {
+    let responseSearchedPokemon = await fetch(pokemonURL);
+    let currentSearchedPokemonJSON = await responseSearchedPokemon.json();
+    let pokemonSearchedName = currentSearchedPokemonJSON['name'];
+    let urlPokemonWithStatsSearched = `https://pokeapi.co/api/v2/pokemon/${pokemonSearchedName}`;
+    let responsePokemonWithStatsSearched = await fetch(urlPokemonWithStatsSearched);
+    let showStatsPokemonSearched = await responsePokemonWithStatsSearched.json();
+    searchedPokemon.push(showStatsPokemonSearched);
+}
+
+function searchLoadedPokemon(search) {
     for (let i = 1; i < loadedPokemon.length; i++) {
         let pokemon = loadedPokemon[i]['name'];
         if (pokemon.toLowerCase().includes(search)) {
