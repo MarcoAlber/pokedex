@@ -36,6 +36,7 @@ function loadingScreenStart() {
     document.getElementById('loadingImage').classList.remove('dp-none');
     document.getElementById('loadingBg').classList.remove('dp-none');
     document.getElementById('header').style.pointerEvents = 'none';
+    document.getElementById('search').readOnly = true;
     document.getElementById('headerImg').style.opacity = "0.3";
     document.getElementById('search').style.opacity = "0.3";
     document.getElementById('gottaHeadline').style.opacity = "0.3";
@@ -47,6 +48,7 @@ function loadingScreenEnd() {
     document.getElementById('loadingImage').classList.add('dp-none');
     document.getElementById('loadingBg').classList.add('dp-none');
     document.getElementById('header').style.pointerEvents = 'auto';
+    document.getElementById('search').readOnly = false;
     document.getElementById('headerImg').style.opacity = "1";
     document.getElementById('search').style.opacity = "1";
     document.getElementById('gottaHeadline').style.opacity = "1";
@@ -311,6 +313,7 @@ async function searchAllPokemon(search) {
         let pokemon = allPokemon['1']['results'][i]['name'];
         let pokemonURL = allPokemon['1']['results'][i]['url'];
         if (pokemon.toLowerCase().includes(search)) {
+            loadingScreenStart();
             let responseSearchedPokemon = await fetch(pokemonURL);
             let currentSearchedPokemonJSON = await responseSearchedPokemon.json();
             let pokemonSearchedName = currentSearchedPokemonJSON['name'];
@@ -318,6 +321,7 @@ async function searchAllPokemon(search) {
             let responsePokemonWithStatsSearched = await fetch(urlPokemonWithStatsSearched);
             let showStatsPokemonSearched = await responsePokemonWithStatsSearched.json();
             searchedPokemon.push(showStatsPokemonSearched);
+            loadingScreenEnd();
         }
     }
     for (let j = 1; j < searchedPokemon.length; j++) {
