@@ -300,12 +300,31 @@ function filterPokemon() {
     search = search.toLowerCase();
     let pokemonContainer = document.getElementById('containerWithPokemon');
     pokemonContainer.innerHTML = containerWithPokemonStatsTemplate();
+    if (search.length < 2) {
+        searchLoadedPokemon(search);
+    }
+    if (search.length == 2) {
+        searchFirstGenPokemon(search);
+    }
     if (search.length > 2) {
         searchAllPokemon(search);
     }
-    if (search.length < 3) {
-        searchLoadedPokemon(search);
+
+}
+
+async function searchFirstGenPokemon(search) {
+    loadingScreenStart();
+    for (let i = 0; i < 151; i++) {
+        let pokemon = allPokemon['1']['results'][i]['name'];
+        let pokemonURL = allPokemon['1']['results'][i]['url'];
+        if (pokemon.toLowerCase().includes(search)) {
+            await searchAllPokemonByLetters(pokemonURL)
+        }
     }
+    for (let j = 1; j < searchedPokemon.length; j++) {
+        showSearchedPokemon(j);
+    }
+    loadingScreenEnd();
 }
 
 async function searchAllPokemon(search) {
