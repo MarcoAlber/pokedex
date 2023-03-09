@@ -1,9 +1,12 @@
 let loadedPokemon = [''];
-let load = 30;
+let load = 20;
 let currentPokemon = 1;
 let isLoading = false;
+let allPokemon = [''];
+let searchedPokemon = [''];
 
 async function loadPokemon() {
+    renderAllPokemon();
     for (i = currentPokemon; i < load; i++) {
         loadingScreenStart();
         currentPokemon++;
@@ -18,6 +21,13 @@ async function loadPokemon() {
         loadingScreenEnd();
         showPokemon(i);
     }
+}
+
+async function renderAllPokemon() {
+    let urlAllPokemon = 'https://pokeapi.co/api/v2/pokemon?limit=1010&offset=0';
+    let responseAllPokemon = await fetch(urlAllPokemon);
+    let allPokemonJSON = await responseAllPokemon.json();
+    allPokemon.push(allPokemonJSON);
 }
 
 function loadingScreenStart() {
@@ -67,7 +77,7 @@ window.onscroll = function () {
             if (load < 975) {
                 load = load + 30;
             }
-            else if (load < 1009) {
+            else if (load < 1011) {
                 load = load + 1;
             }
             loadPokemon();
@@ -138,7 +148,7 @@ function buttonNextPokemon(i) {
     loadedPokemon[i++];
     noAnimation();
     openStatsPokemon(i);
-    if (i > 1007) {
+    if (i > 1009) {
         document.getElementById(`arrowRight${i}`).style.display = "none";
     }
     buttonNextIfEnd(i);
@@ -150,7 +160,7 @@ async function buttonNextIfEnd(i) {
             load = load + 30;
             showAbout(i);
         }
-        else if (load < 1009) {
+        else if (load < 1011) {
             load = load + 1;
             showAbout(i);
         }
@@ -161,6 +171,16 @@ async function buttonNextIfEnd(i) {
 
 function checkIfPokemonNullOpenStatsBgChange() {
     for (let j = 1; j < loadedPokemon.length; j++) {
+        if (document.getElementById(`pokemonCard${j}`) == null) {
+        }
+        else {
+            openStatsBgChange(j);
+        }
+    }
+}
+
+function checkIfPokemonNullOpenStatsSearchedBgChange() {
+    for (let j = 1; j < searchedPokemon.length; j++) {
         if (document.getElementById(`pokemonCard${j}`) == null) {
         }
         else {
@@ -209,11 +229,24 @@ function openStatsPokemon(i) {
     checkIfPokemonNullOpenStatsBgChange();
 }
 
+function openStatsSearchedPokemon(i) {
+    let showPokemonImage = searchedPokemon[i]['sprites']['other']['official-artwork']['front_default'];
+    let pokemonNameBigLetter = searchedPokemon[i]['name'].charAt(0).toUpperCase() + searchedPokemon[i]['name'].slice(1);
+    let pokemonTypeStats = searchedPokemon[i]['types']['0']['type']['name'];
+    let showPokemonNumber = searchedPokemon[i]['id'];
+
+    document.getElementById('containerWithPokemonStats').innerHTML = openStatsSearchedTemplate(i, showPokemonNumber, pokemonNameBigLetter, showPokemonImage);
+    statsHeadlineColorChange();
+    changeBackgroundColorStats(pokemonTypeStats);
+    chartJSSearchedSetting(i);
+    checkIfPokemonNullOpenStatsSearchedBgChange();
+}
+
 function dpNoneArrowIfLessOrMore(i) {
     if (i < 2) {
         document.getElementById(`arrowLeft${i}`).style.display = "none";
     }
-    else if (i > 1007) {
+    else if (i > 1009) {
         document.getElementById(`arrowRight${i}`).style.display = "none";
     }
 }
@@ -258,19 +291,61 @@ function showStats(i) {
     chartJSSetting(i);
 }
 
-function filterPokemon() {
+async function filterPokemon() {
     moveUp();
+    searchedPokemon = [''];
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
     let pokemonContainer = document.getElementById('containerWithPokemon');
     pokemonContainer.innerHTML = containerWithPokemonStatsTemplate();
+    if (search.length > 2) {
+        searchAllPokemon(search);
+    }
+    if (search.length < 3) {
+        searchLoadedPokemon(search);
+    }
+}
 
+async function searchAllPokemon(search) {
+    for (let i = 0; i < allPokemon['1']['results'].length; i++) {
+        let pokemon = allPokemon['1']['results'][i]['name'];
+        let pokemonURL = allPokemon['1']['results'][i]['url'];
+        if (pokemon.toLowerCase().includes(search)) {
+            let responseSearchedPokemon = await fetch(pokemonURL);
+            let currentSearchedPokemonJSON = await responseSearchedPokemon.json();
+            let pokemonSearchedName = currentSearchedPokemonJSON['name'];
+            let urlPokemonWithStatsSearched = `https://pokeapi.co/api/v2/pokemon/${pokemonSearchedName}`;
+            let responsePokemonWithStatsSearched = await fetch(urlPokemonWithStatsSearched);
+            let showStatsPokemonSearched = await responsePokemonWithStatsSearched.json();
+            searchedPokemon.push(showStatsPokemonSearched);
+        }
+    }
+    for (let j = 1; j < searchedPokemon.length; j++) {
+        showSearchedPokemon(j);
+    }
+}
+
+async function searchLoadedPokemon(search) {
     for (let i = 1; i < loadedPokemon.length; i++) {
         let pokemon = loadedPokemon[i]['name'];
         if (pokemon.toLowerCase().includes(search)) {
             showPokemon(i);
         }
     }
+}
+
+function showSearchedPokemon(i) {
+    let showPokemonNumber = searchedPokemon[i]['id'];
+    let pokemonNameBigLetter = searchedPokemon[i]['name'].charAt(0).toUpperCase() + searchedPokemon[i]['name'].slice(1);
+    let showPokemonImage = searchedPokemon[i]['sprites']['other']['official-artwork']['front_default'];
+    let pokemonType = searchedPokemon[i]['types']['0']['type']['name'];
+    if (searchedPokemon[i]['types'].length > 1) {
+        document.getElementById('containerWithPokemon').innerHTML += typeIsTwoSearchedTemplate(i, showPokemonNumber, pokemonNameBigLetter, showPokemonImage, pokemonType);
+    }
+    else {
+        document.getElementById('containerWithPokemon').innerHTML += typeIsOneSearchedTemplate(i, showPokemonNumber, pokemonNameBigLetter, showPokemonImage, pokemonType);
+    }
+    changeBackgroundColor(pokemonType, i);
 }
 
 function moveUp() {

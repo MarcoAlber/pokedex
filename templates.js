@@ -12,6 +12,20 @@ function typeIsOneTemplate(i, showPokemonNumber, pokemonNameBigLetter, showPokem
             </div>`
 }
 
+function typeIsOneSearchedTemplate(i, showPokemonNumber, pokemonNameBigLetter, showPokemonImage, pokemonType) {
+    return `
+            <div onclick="openStatsSearchedPokemon(${i})" id="pokemonCard${i}" class="pokemonCard">
+                <span id="pokemonNumber${i}" class="pokemonNumber"><b>${showPokemonNumber}</b></span>
+                <h1 id="pokemonNames${i}" class="pokemonNames">${pokemonNameBigLetter}</h1>
+                <img id="pokemonImage${i}" class="pokemonImage" src= "${showPokemonImage}">
+                <div id="pokemonTypeContainer${i}" class="pokemonTypeContainer">
+                    <span class="pokemonType">${pokemonType}</span>
+                </div>
+                <div id="background-image-Card${i}" class="background-image-Card">
+                </div>
+            </div>`
+}
+
 function typeIsTwoTemplate(i, showPokemonNumber, pokemonNameBigLetter, showPokemonImage, pokemonType) {
     return `
             <div onclick="openStatsPokemon(${i})" id="pokemonCard${i}" class="pokemonCard">
@@ -21,6 +35,21 @@ function typeIsTwoTemplate(i, showPokemonNumber, pokemonNameBigLetter, showPokem
                 <div id="pokemonTypeContainer${i}" class="pokemonTypeContainer">
                     <span class="pokemonType">${pokemonType}</span>
                     <span class="pokemonType">${loadedPokemon[i]['types']['1']['type']['name']}</span>
+                </div>
+                <div id="background-image-Card${i}" class="background-image-Card">
+                </div>
+            </div>`
+}
+
+function typeIsTwoSearchedTemplate(i, showPokemonNumber, pokemonNameBigLetter, showPokemonImage, pokemonType) {
+    return `
+            <div onclick="openStatsSearchedPokemon(${i})" id="pokemonCard${i}" class="pokemonCard">
+                <span id="pokemonNumber${i}" class="pokemonNumber"><b>${showPokemonNumber}</b></span>
+                <h1 id="pokemonNames${i}" class="pokemonNames">${pokemonNameBigLetter}</h1>
+                <img id="pokemonImage${i}" class="pokemonImage" src= "${showPokemonImage}">
+                <div id="pokemonTypeContainer${i}" class="pokemonTypeContainer">
+                    <span class="pokemonType">${pokemonType}</span>
+                    <span class="pokemonType">${searchedPokemon[i]['types']['1']['type']['name']}</span>
                 </div>
                 <div id="background-image-Card${i}" class="background-image-Card">
                 </div>
@@ -37,6 +66,35 @@ function openStatsTemplate(i, showPokemonNumber, pokemonNameBigLetter, showPokem
             <img class="closeStats" onclick="closeStats()" id="closeStats" src="./img/close-window-64.png">
             <img class="arrowRight" onclick="buttonNextPokemon(${i})" id="arrowRight${i}" src="./img/arrow-24-64-right.png">
             <img class="arrowLeft" onclick="buttonBeforePokemon(${i})" id="arrowLeft${i}" src="./img/arrow-88-64-left.png">
+            <h1 id="pokemonNamesStats">${pokemonNameBigLetter}</h1>
+            <div class="containerStatsImage">
+                <img class="statsImage" src="${showPokemonImage}">
+            </div>
+            <div class="statsWhiteBg">
+                <div class="statsLinks">
+                    <a id="showAbout" onclick="showAbout(${i})">About</a>
+                    <a id="showStats" onclick="showStats(${i})">Stats</a>
+                    <a id="showMoves" onclick="showMoves(${i})">Moves</a>
+                </div>
+                <div id="informationPokemon${i}" class="informationPokemon">
+                    <div class="myChart">
+                        <canvas id="myChart${i}"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+`
+}
+
+function openStatsSearchedTemplate(i, showPokemonNumber, pokemonNameBigLetter, showPokemonImage) {
+    return `
+    <div class="currentPokemonStats" id="currentPokemonStats">
+        <div class="contentPokemonStats">
+            <div class="background-image-StyleCard">
+            </div>
+            <span id="pokemonNumber${i}" class="pokemonNumber"><b>${showPokemonNumber}</b></span>
+            <img class="closeStats" onclick="closeStats()" id="closeStats" src="./img/close-window-64.png">
             <h1 id="pokemonNamesStats">${pokemonNameBigLetter}</h1>
             <div class="containerStatsImage">
                 <img class="statsImage" src="${showPokemonImage}">
