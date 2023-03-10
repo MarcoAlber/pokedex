@@ -380,13 +380,19 @@ async function searchAllPokemonByLetters(pokemonURL) {
     searchedPokemon.push(showStatsPokemonSearched);
 }
 
-function searchLoadedPokemon(search) {
-    for (let i = 1; i < loadedPokemon.length; i++) {
-        let pokemon = loadedPokemon[i]['name'];
+async function searchLoadedPokemon(search) {
+    loadingScreenStart();
+    for (let i = 0; i < loadedPokemon.length; i++) {
+        let pokemon = allPokemon['1']['results'][i]['name'];
+        let pokemonURL = allPokemon['1']['results'][i]['url'];
         if (pokemon.toLowerCase().includes(search)) {
-            showPokemon(i);
+            await searchAllPokemonByLetters(pokemonURL)
         }
     }
+    for (let j = 1; j < searchedPokemon.length; j++) {
+        showSearchedPokemon(j);
+    }
+    loadingScreenEnd();
 }
 
 function showSearchedPokemon(i) {
