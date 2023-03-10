@@ -99,7 +99,6 @@ window.onclick = function (event) {
             }
             else {
                 closeStatsBgChange(j);
-                emptyInputIfSearch();
             }
         }
     }
@@ -212,7 +211,6 @@ function closeStats() {
         }
         else {
             closeStatsBgChange(j);
-            emptyInputIfSearch();
         }
     }
 }
@@ -384,13 +382,6 @@ function scrollUpOrEmptyInput() {
         window.location = '#';
     }
     else {
-        document.getElementById('search').value = '';
-        filterPokemon();
-    }
-}
-
-function emptyInputIfSearch() {
-    if (document.getElementById('search').value.length > 0) {
         document.getElementById('search').value = '';
         filterPokemon();
     }
