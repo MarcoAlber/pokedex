@@ -118,6 +118,20 @@ function showAbout(i) {
     }
 }
 
+function showSearchedAbout(i) {
+    document.getElementById(`informationPokemon${i}`).innerHTML = showSearchedAboutTemplate(i);
+    showAboutHeadlineChange();
+
+    for (let l = 0; l < searchedPokemon[i]['types'].length; l++) {
+        let typeAbout = searchedPokemon[i]['types'][`${l}`]['type']['name'];
+        document.getElementById('typesAbout').innerHTML += showSearchedAboutTypesTemplate(l, i);
+        changeBackgroundColorAbout(typeAbout, l);
+    }
+    for (let k = 0; k < searchedPokemon[i]['abilities'].length; k++) {
+        document.getElementById(`abilities${i}`).innerHTML += showSearchedAboutAbilitiesTemplate(k, i)
+    }
+}
+
 function showAboutHeadlineChange() {
     document.getElementById('showMoves').style.textDecoration = "none";
     document.getElementById('showStats').style.textDecoration = "none";
@@ -133,6 +147,15 @@ function showMoves(i) {
 
     for (let m = 0; m < loadedPokemon[i]['moves'].length; m++) {
         document.getElementById(`containerMoves${i}`).innerHTML += showAllMovesTemplate(m, i);
+    }
+}
+
+function showSearchedMoves(i) {
+    document.getElementById(`informationPokemon${i}`).innerHTML = showMovesTemplate(i);
+    showMovesHeadlineChange();
+
+    for (let m = 0; m < searchedPokemon[i]['moves'].length; m++) {
+        document.getElementById(`containerMoves${i}`).innerHTML += showSearchedAllMovesTemplate(m, i);
     }
 }
 
@@ -289,6 +312,13 @@ function showStats(i) {
     document.getElementById('showStats').style.color = "rgb(33,37,41)";
     statsHeadlineColorChange();
     chartJSSetting(i);
+}
+
+function showSearchedStats(i) {
+    document.getElementById(`informationPokemon${i}`).innerHTML = showStatsTemplate(i);
+    document.getElementById('showStats').style.color = "rgb(33,37,41)";
+    statsHeadlineColorChange();
+    chartJSSearchedSetting(i);
 }
 
 function filterPokemon() {

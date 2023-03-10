@@ -101,9 +101,9 @@ function openStatsSearchedTemplate(i, showPokemonNumber, pokemonNameBigLetter, s
             </div>
             <div class="statsWhiteBg">
                 <div class="statsLinks">
-                    <a id="showAbout" onclick="showAbout(${i})">About</a>
-                    <a id="showStats" onclick="showStats(${i})">Stats</a>
-                    <a id="showMoves" onclick="showMoves(${i})">Moves</a>
+                    <a id="showAbout" onclick="showSearchedAbout(${i})">About</a>
+                    <a id="showStats" onclick="showSearchedStats(${i})">Stats</a>
+                    <a id="showMoves" onclick="showSearchedMoves(${i})">Moves</a>
                 </div>
                 <div id="informationPokemon${i}" class="informationPokemon">
                     <div class="myChart">
@@ -135,6 +135,25 @@ function showAboutTemplate(i) {
     `
 }
 
+function showSearchedAboutTemplate(i) {
+    return `
+    <div class="aboutInformation">
+        <div class="headerInformation">
+            <span class="showAboutRow"><b>Type:</b></span>
+            <span class="showAboutRow"><b>Height:</b></span>
+            <span class="showAboutRow"><b>Weight:</b></span>
+            <span class="showAboutRow"><b>Abilities:</b></span>
+        </div>
+        <div class="pokemonInformations">
+            <span class="showAboutRow" id="typesAbout"></span>
+            <span class="showAboutRow">${searchedPokemon[i]['height'] / 10}m</span>
+            <span class="showAboutRow">${searchedPokemon[i]['weight'] / 10}kg</span>
+            <div class="showAboutRow" id="abilities${i}"></div>
+        </div>
+    </div>
+    `
+}
+
 function showMovesTemplate(i) {
     return `
     <div class="containerMoves" id="containerMoves${i}">
@@ -146,6 +165,14 @@ function showAllMovesTemplate(m, i) {
     return `
     <div id="move${m}" class="move">
         ${loadedPokemon[i]['moves'][`${m}`]['move']['name']}
+    </div>
+       `
+}
+
+function showSearchedAllMovesTemplate(m, i) {
+    return `
+    <div id="move${m}" class="move">
+        ${searchedPokemon[i]['moves'][`${m}`]['move']['name']}
     </div>
        `
 }
@@ -164,9 +191,21 @@ function showAboutTypesTemplate(l, i) {
 `
 }
 
+function showSearchedAboutTypesTemplate(l, i) {
+    return `
+    <p class="types-bg" id="types-bg${l}">${searchedPokemon[i]['types'][`${l}`]['type']['name']}</p>
+`
+}
+
 function showAboutAbilitiesTemplate(k, i) {
     return `
     <p class="abilities-bg">${loadedPokemon[i]['abilities'][`${k}`]['ability']['name']}</p>
+`
+}
+
+function showSearchedAboutAbilitiesTemplate(k, i) {
+    return `
+    <p class="abilities-bg">${searchedPokemon[i]['abilities'][`${k}`]['ability']['name']}</p>
 `
 }
 
