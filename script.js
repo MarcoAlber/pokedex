@@ -328,7 +328,16 @@ function filterPokemon() {
     search = search.toLowerCase();
     let pokemonContainer = document.getElementById('containerWithPokemon');
     pokemonContainer.innerHTML = containerWithPokemonStatsTemplate();
-    if (search.length < 2) {
+    filterIfLength(search);
+}
+
+function filterIfLength(search) {
+    if (search.length < 1) {
+        for (i = 1; i < load; i++) {
+            showPokemon(i);
+        }
+    }
+    if (search.length == 1) {
         searchLoadedPokemon(search);
     }
     if (search.length == 2) {
@@ -337,7 +346,6 @@ function filterPokemon() {
     if (search.length > 2) {
         searchAllPokemon(search);
     }
-
 }
 
 async function searchFirstGenPokemon(search) {
