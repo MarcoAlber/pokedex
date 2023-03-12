@@ -6,9 +6,9 @@ let allPokemon = [''];
 let searchedPokemon = [''];
 
 async function loadPokemon() {
+    loadingScreenStart();
     renderAllPokemon();
     for (i = currentPokemon; i < load; i++) {
-        loadingScreenStart();
         currentPokemon++;
         let urlPokemon = `https://pokeapi.co/api/v2/pokemon-form/${i}/`;
         let responsePokemon = await fetch(urlPokemon);
@@ -18,9 +18,9 @@ async function loadPokemon() {
         let responsePokemonWithStats = await fetch(urlPokemonWithStats);
         let showStatsPokemon = await responsePokemonWithStats.json();
         loadedPokemon.push(showStatsPokemon);
-        loadingScreenEnd();
         showPokemon(i);
     }
+    loadingScreenEnd();
 }
 
 async function renderAllPokemon() {
