@@ -338,12 +338,9 @@ function filterIfLength(search) {
         }
     }
     if (search.length == 1) {
-        searchLoadedPokemon(search);
-    }
-    if (search.length == 2) {
         searchFirstGenPokemon(search);
     }
-    if (search.length > 2) {
+    if (search.length > 1) {
         searchAllPokemon(search);
     }
 }
@@ -353,7 +350,7 @@ async function searchFirstGenPokemon(search) {
     for (let i = 0; i < 151; i++) {
         let pokemon = allPokemon['1']['results'][i]['name'];
         let pokemonURL = allPokemon['1']['results'][i]['url'];
-        if (pokemon.toLowerCase().includes(search)) {
+        if (pokemon.toLowerCase().startsWith(search)) {
             await searchAllPokemonByLetters(pokemonURL)
         }
     }
@@ -368,7 +365,7 @@ async function searchAllPokemon(search) {
     for (let i = 0; i < allPokemon['1']['results'].length; i++) {
         let pokemon = allPokemon['1']['results'][i]['name'];
         let pokemonURL = allPokemon['1']['results'][i]['url'];
-        if (pokemon.toLowerCase().includes(search)) {
+        if (pokemon.toLowerCase().startsWith(search)) {
             await searchAllPokemonByLetters(pokemonURL)
         }
     }
@@ -386,21 +383,6 @@ async function searchAllPokemonByLetters(pokemonURL) {
     let responsePokemonWithStatsSearched = await fetch(urlPokemonWithStatsSearched);
     let showStatsPokemonSearched = await responsePokemonWithStatsSearched.json();
     searchedPokemon.push(showStatsPokemonSearched);
-}
-
-async function searchLoadedPokemon(search) {
-    loadingScreenStart();
-    for (let i = 0; i < loadedPokemon.length; i++) {
-        let pokemon = allPokemon['1']['results'][i]['name'];
-        let pokemonURL = allPokemon['1']['results'][i]['url'];
-        if (pokemon.toLowerCase().includes(search)) {
-            await searchAllPokemonByLetters(pokemonURL)
-        }
-    }
-    for (let j = 1; j < searchedPokemon.length; j++) {
-        showSearchedPokemon(j);
-    }
-    loadingScreenEnd();
 }
 
 function showSearchedPokemon(i) {
