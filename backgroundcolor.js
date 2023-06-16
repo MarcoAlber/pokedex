@@ -1,3 +1,8 @@
+/**
+ * changes pokemon background color depends of pokemon type
+ * @param {string} pokemonType = string of current pokemon type
+ * @param {id} i = id of current pokemon 
+ */
 function changeBackgroundColor(pokemonType, i) {
     if (pokemonType.includes("grass")) { document.getElementById(`pokemonCard${i}`).classList.add('bg-grass') }
     else if (pokemonType.includes("fire")) { document.getElementById(`pokemonCard${i}`).classList.add('bg-fire') }
@@ -19,6 +24,10 @@ function changeBackgroundColor(pokemonType, i) {
     else if (pokemonType.includes("flying")) { document.getElementById(`pokemonCard${i}`).classList.add('bg-flying') }
 }
 
+/**
+ * changes pokemon stats background color depends of pokemon type
+ * @param {string} pokemonTypeStats = string of current pokemon type
+ */
 function changeBackgroundColorStats(pokemonTypeStats) {
     if (pokemonTypeStats.includes("grass")) { document.getElementById('currentPokemonStats').classList.add('bg-grass') }
     else if (pokemonTypeStats.includes("fire")) { document.getElementById('currentPokemonStats').classList.add('bg-fire') }
@@ -40,6 +49,11 @@ function changeBackgroundColorStats(pokemonTypeStats) {
     else if (pokemonTypeStats.includes("flying")) { document.getElementById('currentPokemonStats').classList.add('bg-flying') }
 }
 
+/**
+ * changes pokemon "about" information container type color depends of pokemon type
+ * @param {string} typeAbout = string of current pokemon type
+ * @param {id} l = id of current pokemon 
+ */
 function changeBackgroundColorAbout(typeAbout, l) {
     if (typeAbout.includes("grass")) { document.getElementById(`types-bg${l}`).classList.add('bg-grass') }
     else if (typeAbout.includes("fire")) { document.getElementById(`types-bg${l}`).classList.add('bg-fire') }

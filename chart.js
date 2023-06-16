@@ -1,3 +1,7 @@
+/**
+ * displays the chart of the stats of the current pokemon 
+ * @param {id} i = id of current pokemon 
+ */
 function chartJSSetting(i) {
     let hp = loadedPokemon[i]['stats']['0']['base_stat'];
     let attack = loadedPokemon[i]['stats']['1']['base_stat'];
@@ -54,6 +58,10 @@ function chartJSSetting(i) {
     });
 }
 
+/**
+ * displays the chart of the stats of the searched pokemon 
+ * @param {id} i = id of current pokemon 
+ */
 function chartJSSearchedSetting(i) {
     let hp = searchedPokemon[i]['stats']['0']['base_stat'];
     let attack = searchedPokemon[i]['stats']['1']['base_stat'];
