@@ -507,13 +507,13 @@ function showSearchedPokemon(i) {
 
 /** moves to top of page */
 function moveUp() {
-    window.location = '#';
+    window.scrollTo(0, 0);
 }
 
 /** scrolls up or filters pokemon depends by inputfield value  */
 function scrollUpOrEmptyInput() {
     if (document.getElementById('search').value.length == 0) {
-        window.location = '#';
+        window.scrollTo(0, 0);
     }
     else {
         document.getElementById('search').value = '';
