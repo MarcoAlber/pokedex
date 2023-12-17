@@ -26,7 +26,7 @@ async function loadPokemon() {
 
 /** renders all pokemon from API */
 async function renderAllPokemon() {
-    let urlAllPokemon = 'https://pokeapi.co/api/v2/pokemon?limit=1010&offset=0';
+    let urlAllPokemon = 'https://pokeapi.co/api/v2/pokemon?limit=1025&offset=0';
     let responseAllPokemon = await fetch(urlAllPokemon);
     let allPokemonJSON = await responseAllPokemon.json();
     allPokemon.push(allPokemonJSON);
@@ -98,7 +98,7 @@ function loadAtBottomMorePokemon() {
     if (load < 975) {
         load = load + 30;
     }
-    else if (load < 1011) {
+    else if (load < 1026) {
         load = load + 1;
     }
     loadPokemon();
@@ -215,7 +215,7 @@ function buttonNextPokemon(i) {
     loadedPokemon[i++];
     noAnimation();
     openStatsPokemon(i);
-    if (i > 1009) {
+    if (i > 1024) {
         document.getElementById(`arrowRight${i}`).style.display = "none";
     }
     buttonNextIfEnd(i);
@@ -232,7 +232,7 @@ async function buttonNextIfEnd(i) {
             load = load + 30;
             showAbout(i);
         }
-        else if (load < 1011) {
+        else if (load < 1026) {
             load = load + 1;
             showAbout(i);
         }
@@ -337,7 +337,7 @@ function dpNoneArrowIfLessOrMore(i) {
     if (i < 2) {
         document.getElementById(`arrowLeft${i}`).style.display = "none";
     }
-    else if (i > 1009) {
+    else if (i > 1024) {
         document.getElementById(`arrowRight${i}`).style.display = "none";
     }
 }
